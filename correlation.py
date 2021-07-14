@@ -10,7 +10,7 @@ def load_journal(path):
 
 # print(load_journal('journal.json'))
 
-def compute_phi(event,path):
+def compute_phi(path,event):
     journal = load_journal(path)
     n11, n00, n10, n01 = 0, 0, 0, 0
     for item in journal:
@@ -37,7 +37,7 @@ def compute_correlations(path):
     for item in journal:
         for e in item["events"]:
             if e not in corr:
-                corr[e] = compute_phi(e,path)
+                corr[e] = compute_phi(path,e)
     return corr
 
 
